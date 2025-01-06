@@ -1,4 +1,4 @@
-package com.toastMe
+package com.toastlibrary
 
 import android.content.Context
 import android.widget.Toast

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    `maven-publish` // Add this
 }
 
 android {
@@ -30,6 +31,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    publishing { // Add this
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -40,4 +47,19 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+// Add this
+publishing {
+    publications {
+        create("release", MavenPublication::class) {
+            groupId = "com.github.BassamKhafagy" // com.github.<yourusername>
+            artifactId = "ToastMe" // your repository name
+            version = "0.0.1" // version we want to publish (say 0.0.1)
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
