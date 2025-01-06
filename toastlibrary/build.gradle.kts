@@ -53,7 +53,7 @@ dependencies {
 publishing {
     publications {
         create("release", MavenPublication::class) {
-            groupId = "com.github.BassamKhafagy" // com.github.<yourusername>
+            groupId = "com.github.bassam-nasser" // com.github.<yourusername>
             artifactId = "ToastMe" // your repository name
             version = "0.0.1" // version we want to publish (say 0.0.1)
 
